@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TextAdd : MonoBehaviour
 {
@@ -13,11 +14,14 @@ public class TextAdd : MonoBehaviour
     public TMP_Text texto;
     public TMP_Text textButtom;
     public GameObject Painel;
+    [SerializeField]
+    private string novaScene;
     void Start()
     {
         count = 0;
         texto = GetComponent<TMP_Text>();
         textButtom = GetComponent<TMP_Text>();
+        ChamarNovaFrase();
     }
 
     public void ChamarNovaFrase()
@@ -30,7 +34,9 @@ public class TextAdd : MonoBehaviour
         count++;
         }
         else {
-                Painel.SetActive(false);
+            Painel.SetActive(false);
+            SceneManager.LoadScene(novaScene);
+                
          
         }
 
