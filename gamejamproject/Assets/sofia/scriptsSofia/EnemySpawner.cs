@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     //[SerializeField] private float spawnRate = 3f;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private bool canSpanw = true;
-
+    public float valorMaximoRange = 20f;
     private void Start()
     {
         StartCoroutine(Spawner());
@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (canSpanw)
         {
-            float randomInterval = Random.Range(0f, 20f);
+            float randomInterval = Random.Range(0f, valorMaximoRange);
             yield return new WaitForSeconds(randomInterval);
             Instantiate(enemyPrefab, transform.position, Quaternion.identity);
         }

@@ -6,7 +6,10 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
-    public float vida;
+    public float maxLife;
+    public float currentLife;
+
+
     public bool inRange;
     private bool isTakingDamage;
     public Aurea aureaScript;
@@ -20,9 +23,10 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxLife = 100;
+        currentLife = maxLife;
         target = gameObject.GetComponent<Transform>();
         Player = GameObject.FindGameObjectWithTag("Player");
-        vida = 100;
         inRange = false;
     }
 
@@ -59,15 +63,15 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bullet")
         {
-            vida -= 50;
+            currentLife -= 50;
         }
         if (collision.gameObject.tag == "OrbitCircle")
         {
-            vida -= 10;
+            currentLife -= 10;
         }
         if (collision.gameObject.tag == "OrbitCircle2")
         {
-            vida -= 10;
+            currentLife -= 10;
         }
 
     }
@@ -83,12 +87,12 @@ public class Enemy : MonoBehaviour
         while (inRange)
         {
             yield return new WaitForSeconds(1);
-            vida -= aureaScript.aureaDamage;
+            currentLife -= aureaScript.aureaDamage;
         }
     }
     void Die()
     {
-        if (vida <= 0)
+        if (currentLife <= 0)
         {
             Destroy(gameObject);
             Instantiate(spawnXp, target.position, target.rotation);

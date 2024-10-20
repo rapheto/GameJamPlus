@@ -66,7 +66,7 @@ public class Gun : MonoBehaviour
                 reloadTime = 2;
                 ShootLvlTres();
             }
-            else if (gunLevel == 4) {
+            else if (gunLevel <= 4) {
                 reloadTime = 1.5f;
                 ShootLvlTres();
             }

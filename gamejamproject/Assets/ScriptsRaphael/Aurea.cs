@@ -33,7 +33,7 @@ public class Aurea : MonoBehaviour
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         if (playerScript.AureaLevel == 2 && !aureaLevelDois)
         {
-            aureaRadius *= 1.5f;
+            aureaRadius = 3f;
             Collider.radius = aureaRadius;
             aureaRange.transform.localScale = new Vector3(6f, 6f, 1);
             aureaLevelDois = true;
@@ -46,16 +46,17 @@ public class Aurea : MonoBehaviour
         }
         else if (playerScript.AureaLevel == 4 && !aureaLevelQuatro)
         {
-            aureaRadius *= 1.5f;
-            aureaRange.transform.localScale = new Vector3(9f, 9f, 1);
+            aureaRadius = 4f;
+            aureaRange.transform.localScale = new Vector3(8f, 8f, 1);
             Collider.radius = aureaRadius;
             aureaLevelQuatro = true;
 
         }
         else if (playerScript.AureaLevel == 5 && !aureaLevelCinco)
         {
-            aureaRadius *= 1.5f;
+            aureaRadius = 5f;
             aureaDamage *= 1.5f;
+            aureaRange.transform.localScale = new Vector3(10f, 10f, 1);
             Collider.radius = aureaRadius;
             aureaLevelCinco = true;
         }

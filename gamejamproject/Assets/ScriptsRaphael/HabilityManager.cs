@@ -17,7 +17,7 @@ public class HabilityManager : MonoBehaviour
     }
     public void UparArma()
     {
-        if(gunScript.gunLevel < 5)
+        if(gunScript.gunLevel < 4)
         {
             gunScript.gunLevel++;
             habilityPanel.SetActive(false);
