@@ -12,6 +12,9 @@ public class PlayerCollider : MonoBehaviour
 
     public GameObject habilidadesPanel;
     public Player scriptPlayer;
+
+    [SerializeField] private AudioSource xpAudioSource;
+    [SerializeField] private AudioSource danoPlayerAudioSource;
     void Start()
     {
         scriptPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
@@ -46,11 +49,22 @@ public class PlayerCollider : MonoBehaviour
         if (collision.gameObject.tag == "Xp")
         {
             xpAtual += xpPontuacao;
+            Conquista();
         }
         if (collision.gameObject.tag == "Enemy")
         {
             scriptPlayer.currentLife -= 10;
+            DanoPlayer();
         }
+    }
+
+    private void Conquista()
+    {
+        xpAudioSource.Play();
+    }
+    private void DanoPlayer()
+    {
+        danoPlayerAudioSource.Play();
     }
 
 }

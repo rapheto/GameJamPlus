@@ -15,6 +15,7 @@ public class Timer : MonoBehaviour
     void Start()
     {
         timeToDisplay = 0f;
+        Time.timeScale = 0f;
     }
 
     void Update()
@@ -30,6 +31,7 @@ public class Timer : MonoBehaviour
     {
         isRunning = true;
         painelJogar.SetActive(false);
+        Time.timeScale = 1f;
     }
     void UpdateTimerDisplay()
     {

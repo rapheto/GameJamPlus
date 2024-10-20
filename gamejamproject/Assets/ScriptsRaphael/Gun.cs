@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
     public int gunLevel;
     private bool canShoot = true;
     public float reloadTime;
+    [SerializeField] private AudioSource tiroAudioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +30,15 @@ public class Gun : MonoBehaviour
     void Shoot()
     {
         Instantiate(bullet, bulletPoint.position, bulletPoint.rotation);
+        Tiro();
+        
     }
     void ShootLvlTres()
     {
         Instantiate(bullet, bulletPoint.position, bulletPoint.rotation);
         Instantiate(bullet, bulletPoint2.position, bulletPoint2.rotation);
         Instantiate(bullet, bulletPoint3.position, bulletPoint3.rotation);
+        Tiro();
     }
 
     IEnumerator reload()
@@ -77,5 +81,11 @@ public class Gun : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         Shoot();
+        Tiro();
+    }
+
+    private void Tiro()
+    {
+        tiroAudioSource.Play();
     }
 }
