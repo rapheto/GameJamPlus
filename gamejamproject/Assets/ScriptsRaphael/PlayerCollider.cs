@@ -11,8 +11,10 @@ public class PlayerCollider : MonoBehaviour
     public bool levelUp;
 
     public GameObject habilidadesPanel;
+    public Player scriptPlayer;
     void Start()
     {
+        scriptPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         habilidadesPanel.SetActive(false);
         xpPontuacao = 5;
         xpAtual = 0;
@@ -34,6 +36,7 @@ public class PlayerCollider : MonoBehaviour
         }
         if (levelUp) { 
             habilidadesPanel.SetActive (true);
+            Time.timeScale = 0;
             levelUp = false;
         }
     }
@@ -43,6 +46,10 @@ public class PlayerCollider : MonoBehaviour
         if (collision.gameObject.tag == "Xp")
         {
             xpAtual += xpPontuacao;
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            scriptPlayer.currentLife -= 10;
         }
     }
 

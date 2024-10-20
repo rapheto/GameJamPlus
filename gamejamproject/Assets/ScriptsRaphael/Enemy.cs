@@ -2,23 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Enemy : MonoBehaviour
 {
-    public float vida;
+    public float maxLife;
+    public float currentLife;
+
+
     public bool inRange;
     private bool isTakingDamage;
     public Aurea aureaScript;
+
+    public GameObject Player;
+    public float speed;
+    private float distance;
+
+    public GameObject spawnXp;
+    public Transform target;
     // Start is called before the first frame update
     void Start()
     {
-        vida = 100;
+        maxLife = 100;
+        currentLife = maxLife;
+        target = gameObject.GetComponent<Transform>();
+        Player = GameObject.FindGameObjectWithTag("Player");
         inRange = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        Die();
+        distance = Vector2.Distance(transform.position, Player.transform.position);
+        Vector2 direction = Player.transform.position - transform.position;
+        direction.Normalize();
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.position = Vector2.MoveTowards(this.transform.position, Player.transform.position, speed *Time.deltaTime);
+        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+
         aureaScript = GameObject.FindGameObjectWithTag("Aurea").GetComponent<Aurea>();
         if (inRange && !isTakingDamage)
         {
@@ -39,6 +61,19 @@ public class Enemy : MonoBehaviour
         {
             inRange = true;
         }
+        if (collision.gameObject.tag == "Bullet")
+        {
+            currentLife -= 50;
+        }
+        if (collision.gameObject.tag == "OrbitCircle")
+        {
+            currentLife -= 10;
+        }
+        if (collision.gameObject.tag == "OrbitCircle2")
+        {
+            currentLife -= 10;
+        }
+
     }
     void OnTriggerExit2D(Collider2D collision)
     {
@@ -52,7 +87,15 @@ public class Enemy : MonoBehaviour
         while (inRange)
         {
             yield return new WaitForSeconds(1);
-            vida -= aureaScript.aureaDamage;
+            currentLife -= aureaScript.aureaDamage;
+        }
+    }
+    void Die()
+    {
+        if (currentLife <= 0)
+        {
+            Destroy(gameObject);
+            Instantiate(spawnXp, target.position, target.rotation);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -13,20 +14,29 @@ public class Player : MonoBehaviour
     public bool aureaIsOn;
     public GameObject aurea;
 
+    public float maxLife;
+    public float currentLife;
+    public Slider lifeSlider;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        lifeSlider = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Slider>();
+        maxLife = 100;
+        currentLife = maxLife;
+        lifeSlider.maxValue = maxLife;
+        lifeSlider.value = currentLife;
         AureaLevel = 0;
         aureaIsOn = false;
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        
 
     }
     void Update()
     {
+        lifeSlider.value = currentLife;
         if (AureaLevel == 1 && aureaIsOn == false)
         {
             aurea.SetActive(true);
@@ -52,6 +62,9 @@ public class Player : MonoBehaviour
         // Aplica a força ao Rigidbody para mover o jogador
         rb.velocity = movimento * velocidadeMovimento;
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+    }
 
-    
 }
