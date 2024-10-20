@@ -1804,6 +1804,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2812492442747920855, guid: 67a03c70c9fccf34ab63d22e3c4104f6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.932
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812492442747920855, guid: 67a03c70c9fccf34ab63d22e3c4104f6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.223
+      objectReference: {fileID: 0}
     - target: {fileID: 2837399041663470362, guid: 67a03c70c9fccf34ab63d22e3c4104f6, type: 3}
       propertyPath: m_Name
       value: Player

@@ -18,12 +18,13 @@ public class Player : MonoBehaviour
     public float currentLife;
     public Slider lifeSlider;
 
-
+    public Animator anim;
 
     
     // Start is called before the first frame update
     void Start()
     {
+        anim = gameObject.GetComponent<Animator>();
         lifeSlider = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Slider>();
         maxLife = 100;
         currentLife = maxLife;
@@ -60,7 +61,13 @@ public class Player : MonoBehaviour
         {
             movimento.Normalize();
         }
-
+        if (moveHorizontal > 0.0f || moveVertical > 0.0f || moveHorizontal < 0.0f || moveVertical < 0.0f) {
+            anim.SetBool("Walking", true);
+        }
+        else
+        {
+            anim.SetBool("Walking", false);
+        }
         // Aplica a força ao Rigidbody para mover o jogador
         rb.velocity = movimento * velocidadeMovimento;
     }
