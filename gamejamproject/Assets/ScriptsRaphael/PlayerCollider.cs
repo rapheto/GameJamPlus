@@ -34,6 +34,7 @@ public class PlayerCollider : MonoBehaviour
         }
         if (levelUp) { 
             habilidadesPanel.SetActive (true);
+            Time.timeScale = 0;
             levelUp = false;
         }
     }

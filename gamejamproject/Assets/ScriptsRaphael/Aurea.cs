@@ -12,9 +12,11 @@ public class Aurea : MonoBehaviour
     public bool aureaLevelTres;
     public bool aureaLevelQuatro;
     public bool aureaLevelCinco;
+    public GameObject aureaRange;
     // Start is called before the first frame update
     void Start()
     {
+        
         aureaLevelDois = false;
         aureaLevelTres = false;
         aureaLevelQuatro = false;
@@ -33,6 +35,7 @@ public class Aurea : MonoBehaviour
         {
             aureaRadius *= 1.5f;
             Collider.radius = aureaRadius;
+            aureaRange.transform.localScale = new Vector3(6f, 6f, 1);
             aureaLevelDois = true;
         }
         else if (playerScript.AureaLevel == 3 && !aureaLevelTres)
@@ -44,6 +47,7 @@ public class Aurea : MonoBehaviour
         else if (playerScript.AureaLevel == 4 && !aureaLevelQuatro)
         {
             aureaRadius *= 1.5f;
+            aureaRange.transform.localScale = new Vector3(9f, 9f, 1);
             Collider.radius = aureaRadius;
             aureaLevelQuatro = true;
 

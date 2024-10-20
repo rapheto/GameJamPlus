@@ -61,11 +61,15 @@ public class Gun : MonoBehaviour
                 Shoot();
                 StartCoroutine(rajada());
             }
-            else if (gunLevel == 3) {
+            else if (gunLevel == 3)
+            {
                 reloadTime = 2;
                 ShootLvlTres();
             }
-
+            else if (gunLevel == 4) {
+                reloadTime = 1.5f;
+                ShootLvlTres();
+            }
         }
     }
 

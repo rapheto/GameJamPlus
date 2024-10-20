@@ -14,12 +14,13 @@ public class DetectionScript : MonoBehaviour
 
     private void Awake()
     {
-        player = FindFirstObjectByType<PlayerController>().transform;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
     }
 
     void Update()
     {
-       Vector2 enemyToPlayeVector = player.position - transform.position;
+        Vector2 enemyToPlayeVector = player.position - transform.position;
         DirectionToPlayer = enemyToPlayeVector.normalized;
 
         if(enemyToPlayeVector.magnitude <= playerAwerenessDistance)

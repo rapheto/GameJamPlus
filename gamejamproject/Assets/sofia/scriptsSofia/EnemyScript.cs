@@ -13,7 +13,7 @@ public class EnemyScript : MonoBehaviour
 
     private Rigidbody2D rigidibody;
 
-    private  DetectionScript playerawernessController;
+    private DetectionScript playerawernessController;
 
     private Vector2 targetDirection;
 

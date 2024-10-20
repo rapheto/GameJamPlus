@@ -8,6 +8,12 @@ TagManager:
   - Xp
   - PlayerCollider
   - Enemy
+  - Bullet
+  - Gun
+  - OrbitCircle
+  - OrbitHab
+  - OrbitCircle2
+  - HealthBar
   layers:
   - Default
   - TransparentFX

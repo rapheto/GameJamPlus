@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private float spawnRate = 1f;
+    //[SerializeField] private float spawnRate = 3f;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private bool canSpanw = true;
 
@@ -15,10 +15,10 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator Spawner()
     {
-        WaitForSeconds wait = new WaitForSeconds(spawnRate);
         while (canSpanw)
         {
-            yield return wait;
+            float randomInterval = Random.Range(0f, 20f);
+            yield return new WaitForSeconds(randomInterval);
             Instantiate(enemyPrefab, transform.position, Quaternion.identity);
         }
     }
