@@ -20,6 +20,7 @@ public class Xp : MonoBehaviour
         if (collision.gameObject.tag == "PlayerCollider")
         {
             Debug.Log("EntrouXP");
+
             Destroy(gameObject);
         }
     }

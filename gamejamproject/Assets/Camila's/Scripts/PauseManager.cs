@@ -10,6 +10,7 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject painelPause;
     [SerializeField] private GameObject painelSaida;
     [SerializeField] private GameObject painelVoltaMenu;
+  
 
     public void TrocarDeCena()
     {

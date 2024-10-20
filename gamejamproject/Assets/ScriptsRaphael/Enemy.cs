@@ -22,14 +22,17 @@ public class Enemy : MonoBehaviour
     public Transform target;
 
     [SerializeField] private AudioSource danoEnemyAudioSource;
+    [SerializeField] private AudioSource passosEnemyAudioSource;
     // Start is called before the first frame update
     void Start()
     {
+        PassosEnemy();
         maxLife = 100;
         currentLife = maxLife;
         target = gameObject.GetComponent<Transform>();
         Player = GameObject.FindGameObjectWithTag("Player");
         inRange = false;
+
     }
 
     // Update is called once per frame
@@ -66,14 +69,17 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             currentLife -= 50;
+            DanoEnemy();
         }
         if (collision.gameObject.tag == "OrbitCircle")
         {
             currentLife -= 10;
+            DanoEnemy();
         }
         if (collision.gameObject.tag == "OrbitCircle2")
         {
             currentLife -= 10;
+            DanoEnemy();
         }
 
     }
@@ -90,19 +96,26 @@ public class Enemy : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             currentLife -= aureaScript.aureaDamage;
+            DanoEnemy();
         }
     }
     void Die()
     {
         if (currentLife <= 0)
         {
-            DanoEnemy();
+            
             Destroy(gameObject);
             Instantiate(spawnXp, target.position, target.rotation);
+            DanoEnemy();
         }
     }
     private void DanoEnemy()
     {
         danoEnemyAudioSource.Play();
+    }
+
+    private void PassosEnemy()
+    {
+        passosEnemyAudioSource.Play();
     }
 }
