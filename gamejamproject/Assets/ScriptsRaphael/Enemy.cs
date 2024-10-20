@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject spawnXp;
     public Transform target;
+
+    [SerializeField] private AudioSource danoEnemyAudioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -94,8 +96,13 @@ public class Enemy : MonoBehaviour
     {
         if (currentLife <= 0)
         {
+            DanoEnemy();
             Destroy(gameObject);
             Instantiate(spawnXp, target.position, target.rotation);
         }
+    }
+    private void DanoEnemy()
+    {
+        danoEnemyAudioSource.Play();
     }
 }
