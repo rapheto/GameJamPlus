@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Camila's/Cenas/Camila-menu.unity
-    guid: f45675ee80746b24fac9bdf09a7cdec0
+    path: Assets/Camila's/Cenas/Menu.unity
+    guid: 4fecf4cfef39a9b41ad9bc4fc2931d7f
   - enabled: 1
     path: Assets/Camila's/Cenas/Camila-tutorial.unity
     guid: 6924ee8b65c844c44a351a236818f4ca
@@ -18,4 +18,3 @@ EditorBuildSettings:
     path: Assets/Camila's/Cenas/Camila-jogo.unity
     guid: bc515157fb9fa41459be51f81479e793
   m_configObjects: {}
-  m_UseUCBPForAssetBundles: 0

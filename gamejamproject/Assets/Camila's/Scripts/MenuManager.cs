@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
     
     public void Jogar()
     {
-        SceneManager.LoadScene(levelDoJogo);
+        SceneManager.LoadScene(3);
     }
 
     public void AbrirOpcoes()
