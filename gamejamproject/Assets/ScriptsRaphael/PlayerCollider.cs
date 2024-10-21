@@ -31,17 +31,22 @@ public class PlayerCollider : MonoBehaviour
     }
     void LevelUpar()
     {
-        if (xpAtual >= 15)
+        if(levelAtual < 14)
         {
-            xpAtual = 0;
-            levelAtual++;
-            levelUp = true;
+            if (xpAtual >= 15)
+            {
+                xpAtual = 0;
+                levelAtual++;
+                levelUp = true;
+            }
+            if (levelUp)
+            {
+                habilidadesPanel.SetActive(true);
+                Time.timeScale = 0;
+                levelUp = false;
+            }
         }
-        if (levelUp) { 
-            habilidadesPanel.SetActive (true);
-            Time.timeScale = 0;
-            levelUp = false;
-        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

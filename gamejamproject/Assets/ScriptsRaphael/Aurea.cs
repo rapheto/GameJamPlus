@@ -35,7 +35,7 @@ public class Aurea : MonoBehaviour
         {
             aureaRadius = 3f;
             Collider.radius = aureaRadius;
-            aureaRange.transform.localScale = new Vector3(6f, 6f, 1);
+            aureaRange.transform.localScale = new Vector3(0.6f, 0.6f, 1);
             aureaLevelDois = true;
         }
         else if (playerScript.AureaLevel == 3 && !aureaLevelTres)
@@ -47,7 +47,7 @@ public class Aurea : MonoBehaviour
         else if (playerScript.AureaLevel == 4 && !aureaLevelQuatro)
         {
             aureaRadius = 4f;
-            aureaRange.transform.localScale = new Vector3(8f, 8f, 1);
+            aureaRange.transform.localScale = new Vector3(0.8f, 0.8f, 1);
             Collider.radius = aureaRadius;
             aureaLevelQuatro = true;
 
@@ -56,7 +56,7 @@ public class Aurea : MonoBehaviour
         {
             aureaRadius = 5f;
             aureaDamage *= 1.5f;
-            aureaRange.transform.localScale = new Vector3(10f, 10f, 1);
+            aureaRange.transform.localScale = new Vector3(1f, 1f, 1);
             Collider.radius = aureaRadius;
             aureaLevelCinco = true;
         }

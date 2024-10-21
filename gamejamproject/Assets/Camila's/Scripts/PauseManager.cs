@@ -14,7 +14,7 @@ public class PauseManager : MonoBehaviour
 
     public void TrocarDeCena()
     {
-        SceneManager.LoadScene(levelDoJogo);
+        SceneManager.LoadScene(0);
     }
 
     public void AbrirPause()
@@ -58,5 +58,8 @@ public class PauseManager : MonoBehaviour
     {
         Debug.Log("Saiu do Jogo");
         Application.Quit();
+    }
+    public void SairJogoPause() {
+        SceneManager.LoadScene(0);
     }
 }
